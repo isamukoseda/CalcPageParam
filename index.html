@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jasmin sample</title>
+    <link rel="shortcut icon" type="image/png" href="jasmine/lib/jasmine-core/jasmine_favicon.png">
+    <link rel="stylesheet" type="text/css" href="jasmine/lib/jasmine-core/jasmine.css">
+
+    <script type="text/javascript" src="jasmine/lib/jasmine-core/jasmine.js"></script>
+    <script type="text/javascript" src="jasmine/lib/jasmine-core/jasmine-html.js"></script>
+    <script type="text/javascript" src="jasmine/lib/jasmine-core/boot.js"></script>
+</head>
+<body>
+    <h3>＊＊＊プロジェクト：ユニットテスト</h3>
+    ページ単位でのデータ表示に必要なパラメターの正しい値を算出する処理のユニットテストを実行<br>
+    対象の関数は、calc_page_param(NCPSApageNO, NCPSAperPAGE, NCPSAllRecord)<br>
+    <ul type="in_param">
+        <li>NCPSApageNO    ... ページ番号</li>
+        <li>NCPSAperPAGE   ... ページ単位の表示レコード数</li>
+        <li>NCPSAllRecord  ... 全レコード数</li>
+    </ul>
+    例）<br>
+    calc_page_param(1, 1, 12) => 1:1:1:12 --> page_no:per_page:index:total_record<br>
+    <br>
+    <script type="text/javascript" src="calcPageParam.js"></script>
+    <script type="text/javascript" src="calcPagePram_test.js"></script>
+</body>
+</html>
