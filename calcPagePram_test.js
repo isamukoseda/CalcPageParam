@@ -80,5 +80,61 @@ describe('文字列を指定した際のテスト', function() {
     it('page=１, per_page=10, total=15 => 1:10:1:15', function(){
         expect(calc_page_param(1, 10, '15')).toBe("1:10:1:15");
     });
-    
+});
+
+describe('特殊文字を指定した際のテスト', function() {
+    it('page=true, per_page=10, total=15 => 1:10:1:15', function(){
+        expect(calc_page_param(true, 10, 15)).toBe("1:10:1:15");
+    });
+    it('page=1, per_page=true, total=15 => 1:1:1:15', function(){
+        expect(calc_page_param(1, true, 15)).toBe("1:1:1:15");
+    });
+    it('page=1, per_page=10, total=true => 1:1:1:1', function(){
+        expect(calc_page_param(1, 10, true)).toBe("1:1:1:1");
+    });
+    it('page=false, per_page=10, total=15 => 1:10:1:15', function(){
+        expect(calc_page_param(false, 10, 15)).toBe("1:10:1:15");
+    });
+    it('page=true, per_page=10, total=15 => 1:10:1:15', function(){
+        expect(calc_page_param('true', 10, 15)).toBe("1:10:1:15");
+    });
+    it('page=1, per_page=true, total=15 => 1:1:1:15', function(){
+        expect(calc_page_param(1, 'true', 15)).toBe("1:1:1:15");
+    });
+    it('page=1, per_page=10, total=true => 1:1:1:1', function(){
+        expect(calc_page_param(1, 10, 'true')).toBe("1:1:1:1");
+    });
+    it('page=false, per_page=10, total=15 => 1:10:1:15', function(){
+        expect(calc_page_param('false', 10, 15)).toBe("1:10:1:15");
+    });
+    it('page=null, per_page=10, total=15 => 1:10:1:15', function(){
+        expect(calc_page_param('null', 10, 15)).toBe("1:10:1:15");
+    });
+    it('page=null, per_page=10, total=15 => 1:10:1:15', function(){
+        expect(calc_page_param(null, 10, 15)).toBe("1:10:1:15");
+    });
+    it('page=null, per_page=10, total=15 => 1:10:1:15', function(){
+        expect(calc_page_param('', 10, 15)).toBe("1:10:1:15");
+    });
+});
+
+describe('16進数を指定した際のテスト', function() {
+    it('page=0x1, per_page=10, total=15 => 1:10:1:15', function(){
+        expect(calc_page_param(0x1, 10, 15)).toBe("1:10:1:15");
+    });
+    it('page=1, per_page=0xa, total=15 => 1:10:1:15', function(){
+        expect(calc_page_param(1, 0xa, 15)).toBe("1:10:1:15");
+    });
+    it('page=1, per_page=10, total=0xf => 1:10:1:15', function(){
+        expect(calc_page_param(1, 10, 0xf)).toBe("1:10:1:15");
+    });
+    it('page=0x1, per_page=10, total=15 => 1:10:1:15', function(){
+        expect(calc_page_param('0x1', 10, 15)).toBe("1:10:1:15");
+    });
+    it('page=1, per_page=0xa, total=15 => 1:10:1:15', function(){
+        expect(calc_page_param(1, '0xa', 15)).toBe("1:10:1:15");
+    });
+    it('page=1, per_page=10, total=0xf => 1:10:1:15', function(){
+        expect(calc_page_param(1, 10, '0xf')).toBe("1:10:1:15");
+    });
 });
