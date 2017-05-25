@@ -9,6 +9,17 @@ function calc_page_param(NCPSApageNO, NCPSAperPAGE, NCPSAcount) {
     var per_page = Math.floor(NCPSAperPAGE);
     var page = Math.floor(NCPSApageNO);
     
+    // check input param
+    if(isNaN(page)){
+        page = 1;
+    }
+    if(isNaN(per_page)){
+        per_page = 1;
+    }
+    if(isNaN(total)){
+        total = 1;
+    }
+
     // check per_page value
     if(per_page < 1){
         per_page = 1;
@@ -30,7 +41,7 @@ function calc_page_param(NCPSApageNO, NCPSAperPAGE, NCPSAcount) {
         page = 1;
     }
 
-    // calc INDEX value    
+    // calc result(INDEX) value    
     var index = Math.floor(per_page * (page - 1)) + 1;
     
     if (index > total) {
@@ -43,3 +54,4 @@ function calc_page_param(NCPSApageNO, NCPSAperPAGE, NCPSAcount) {
     // return :: for Jasmine (https://github.com/jasmine/jasmine)
     return page+":"+per_page+":"+index+":"+total;
 }
+
