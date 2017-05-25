@@ -64,11 +64,11 @@ describe('文字列を指定した際のテスト', function() {
     it('page=１, per_page=10, total=15 => 1:10:1:15', function(){
         expect(calc_page_param('１', 10, 15)).toBe("1:10:1:15");
     });
-    it('page=１, per_page=10, total=15 => 1:10:1:15', function(){
-        expect(calc_page_param(1, '１０', 15)).toBe("1:10:1:15");
+    it('page=１, per_page=10, total=15 => 1:1:1:15', function(){
+        expect(calc_page_param(1, '１０', 15)).toBe("1:1:1:15");
     });
-    it('page=１, per_page=10, total=15 => 1:10:1:15', function(){
-        expect(calc_page_param(1, 10, '１５')).toBe("1:10:1:15");
+    it('page=１, per_page=10, total=15 => 1:1:1:1', function(){
+        expect(calc_page_param(1, 10, '１５')).toBe("1:1:1:1");
     });
     // 半角を''で括って（文字列として）指定
     it('page=１, per_page=10, total=15 => 1:10:1:15', function(){
